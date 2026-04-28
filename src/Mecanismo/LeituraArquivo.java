@@ -25,7 +25,7 @@ public class LeituraArquivo {
         String diretorio = scan.next();
         System.out.print("Informe o nome do arquivo: ");
         String nomeArquivo = scan.next();
-        this.caminhoDoArquivo = diretorio + "\\" + nomeArquivo;
+        this.caminhoDoArquivo = diretorio + "/" + nomeArquivo;
         scan.close();
     }
 
