@@ -1,15 +1,18 @@
 package Testes;
 
-import Exemplo.LeitorSemTratamento;
-import java.io.IOException;
+import Exemplo.LeitorComTratamento;
 
-public class TesteLeitura {
-    public static void executar(){
-        LeitorSemTratamento leitor = new LeitorSemTratamento();    
-        try{
-        leitor.lerArquivo("/home/diego/Estudos/arquivo.txt");
-        } catch (IOException e){
-        e.printStackTrace();
-        }
+// import Exemplo.LeitorSemTratamento;
+// import java.io.IOException;
+
+public class TesteLeitura{
+    // public void executar() throws IOException{
+    //     LeitorSemTratamento leitor = new LeitorSemTratamento();
+    //     leitor.lerArquivo("c:\\temp\\existe.txt");
+    // }
+
+    public void executar(){
+        LeitorComTratamento leitor = new LeitorComTratamento();
+        leitor.lerArquivo("c:\\temp\\existe.txt");
     }
 }
