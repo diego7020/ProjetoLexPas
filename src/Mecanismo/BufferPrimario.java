@@ -9,45 +9,42 @@ public class BufferPrimario {
 
     private ArrayList<String> bufferPrimario;
 
-    public BufferedReader getLeitor() {
-        return leitor;
-    }
-
-    public ArrayList<String> getBufferedPrimario() {
+    public ArrayList<String> getBufferPrimario() {
         return bufferPrimario;
     }
 
     public BufferPrimario(BufferedReader leitor){
         this.leitor = leitor;
     }
-
-    public void processarDadosDoBufferPrimario(){
+    
+    public void processarArquivoNoBufferPrimario(){
         this.bufferPrimario = new ArrayList<>();
-        try{
-            String linha;
+        try {
+            String linha = "";
             while((linha = this.leitor.readLine()) != null){
-                bufferPrimario.add(linha);
-            }
-        }
-        catch(IOException ex){
-            System.err.println();
-        }
-        finally{
-            if (this.leitor != null){
+                this.bufferPrimario.add(linha);
+            }            
+        } catch (IOException e) {
+            System.err.println("Erro ao carregar o arquivo.");
+            System.err.println(e);
+        } finally {
+            if(this.leitor != null){
                 try {
                     this.leitor.close();
                 } catch (IOException e) {
+                    System.err.println("Erro ao fechar o arquivo.");
                     System.err.println(e);
                 }
             }
         }
     }
 
-    public void imprimirConteudoDoBufferPrimario(boolean flag){
+    public void imprimirConteudoDoBufferPrimario(Boolean flag){
         if (flag){
-            System.out.println("### Conteudo do buffer primario ###");
-            for (String texto : this.bufferPrimario) {
-                System.out.println(texto);                
+            System.out.println("------------------------------------");
+            System.out.println("### Conteúdo do Buffer Primário: ###");
+            for (String texto : bufferPrimario) {
+                System.out.println(texto);
             }
         }
     }
