@@ -34,6 +34,7 @@ public class Token {
     public String toString() {
         return "Token (tipo=[" + tipo + "]"
         + ", lexema=[" + lexema  + "]"
+        + ", linha=[" + linha  + "]"
         + ", posicao=[" + posicao + "])";
     }
 

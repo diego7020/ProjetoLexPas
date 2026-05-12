@@ -1,11 +1,10 @@
 package Mecanismo;
 
-import java.util.*;
-import java.util.regex.*;
-
 import Dominio.TabelaSimboloLinguagem;
 import Dominio.Token;
 import Dominio.TokenType;
+import java.util.*;
+import java.util.regex.*;
 
 public class BufferSecundario {
     public ArrayList<String> bufferPrimario;
@@ -76,12 +75,37 @@ public class BufferSecundario {
                         TokenType tipo = TabelaSimboloLinguagem.buscar(lexema);
                         valor = new Token(tipo, lexema, linha, posicao);
                     }
+                    else if (this.IsCharacter(lexema)){
+                        valor = new Token(TokenType.CHARACTER, lexema, linha, posicao);
+                    }
+                    else if (this.IsIdentifier(lexema)){
+                        valor = new Token(TokenType.IDENTIFIER, lexema, linha, posicao);
+                    }
+                    else if (this.IsLiteral(lexema)){
+                        valor = new Token(TokenType.LITERAL, lexema, linha, posicao);
+                    }
+                    else if (this.IsNumber(lexema)){
+                        valor = new Token(TokenType.NUMBER, lexema, linha, posicao);
+                    }
+                    else{
+                        valor = new Token(TokenType.UNKNOWN, lexema, linha, posicao);
+                    }
+                    this.bufferSecundario.add(valor);
                 }
-
-
             }
+            linha++;
         }
+    }
 
+    public void imprimirConteudoBufferSecundario(Boolean flag){
+        if (flag){
+            System.out.println("-------------------------------------");
+            System.out.println("Conteudo do buffer secundario: ");
+            for (Token token: this.bufferSecundario){
+                System.out.println(token);
+            }
+            System.out.println("----------------------------");
+        }
     }
 
 }
