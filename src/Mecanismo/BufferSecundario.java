@@ -3,7 +3,9 @@ package Mecanismo;
 import java.util.*;
 import java.util.regex.*;
 
+import Dominio.TabelaSimboloLinguagem;
 import Dominio.Token;
+import Dominio.TokenType;
 
 public class BufferSecundario {
     public ArrayList<String> bufferPrimario;
@@ -70,7 +72,10 @@ public class BufferSecundario {
                 if (!lexemasProcessados.contains(lexema)){
                     lexemasProcessados.add(lexema);
 
-                    
+                    if (TabelaSimboloLinguagem.contem(lexema)){
+                        TokenType tipo = TabelaSimboloLinguagem.buscar(lexema);
+                        valor = new Token(tipo, lexema, linha, posicao);
+                    }
                 }
 
 
